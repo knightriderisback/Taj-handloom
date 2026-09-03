@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Taj Handloom Dalli Rajhara | Mattresses, Razaai, Curtains & Home Furnishings</title>
+<meta name="description" content="Taj Handloom — Dalli Rajhara's trusted home store for 15+ years. Buy mattresses, razaai, blankets, curtains, bedsheets, mosquito nets & more. Fair prices, WhatsApp support." />
+<meta name="keywords" content="Taj Handloom, Dalli Rajhara, mattress, gadda, razaai, quilt, curtain, parde, bedsheet, blanket, mosquito net, home furnishing, Chhattisgarh" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="author" content="Taj Handloom (Furnishing), Dalli Rajhara" />
+<meta name="geo.region" content="IN-CT" />
+<meta name="geo.placename" content="Dalli Rajhara" />
+<link rel="canonical" href="https://taj-handloom.vercel.app/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_IN" />
+<meta property="og:locale:alternate" content="hi_IN" />
+<meta property="og:site_name" content="Taj Handloom" />
+<meta property="og:title" content="Taj Handloom Dalli Rajhara | Mattresses, Razaai & Curtains" />
+<meta property="og:description" content="Trusted home furnishings store in Dalli Rajhara for 15+ years. Mattresses, quilts, curtains, bedsheets & more. Fair prices, local service." />
+<meta property="og:url" content="https://taj-handloom.vercel.app/" />
+<meta property="og:image" content="https://taj-handloom.vercel.app/images/44_Hero_Showroom.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Taj Handloom showroom in Dalli Rajhara" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Taj Handloom Dalli Rajhara | Home Furnishings" />
+<meta name="twitter:description" content="Premium mattresses, razaai, curtains & more — trusted by 5000+ families in Dalli Rajhara." />
+<meta name="twitter:image" content="https://taj-handloom.vercel.app/images/44_Hero_Showroom.jpg" />
+<meta name="theme-color" content="#8CA37E" />
+<link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/images/44_Hero_Showroom.jpg" fetchpriority="high" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeGoodsStore","name":"Taj Handloom (Furnishing)","alternateName":"Taj Handloom Dalli Rajhara","description":"Premier home furnishings store in Dalli Rajhara offering mattresses, quilts, blankets, curtains, bedsheets, mosquito nets and more.","url":"https://taj-handloom.vercel.app/","telephone":"+919893357864","image":"https://taj-handloom.vercel.app/images/44_Hero_Showroom.jpg","address":{"@type":"PostalAddress","streetAddress":"Gyanu pump ke pas, Main road, Ward Number 26","addressLocality":"Dalli Rajhara","addressRegion":"Chhattisgarh","postalCode":"491228","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":20.5833,"longitude":81.0833},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"09:00","closes":"21:30"}],"priceRange":"₹₹","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","bestRating":"5","ratingCount":"50"},"sameAs":["https://wa.me/919893357864"]}
+</script>
