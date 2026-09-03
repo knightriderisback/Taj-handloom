@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Taj Handloom (Furnishing) — Dalli Rajhara's Premier Home Store</title>
 <meta name="description" content="Taj Handloom Dalli Rajhara — Premium mattresses, quilts, blankets, curtains, mosquito nets, pillows, doormats & rexine. Trusted for 15+ years. Call/WhatsApp 9893357864." />
 <link rel="canonical" href="https://taj-handloom.vercel.app/" />
@@ -33,6 +33,7 @@
 (function(){
   var url = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/index.html";
   var imgBase = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/";
+
   var seoBlock = [
     '<link rel="canonical" href="https://taj-handloom.vercel.app/" />',
     '<meta name="robots" content="index, follow, max-image-preview:large" />',
@@ -90,18 +91,90 @@
     '</scr' + 'ipt>'
   ].join('\n');
 
+  var a11yCss = [
+    '<style id="a11y-polish">',
+    '.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;}',
+    '.skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:12px 18px;background:#8CA37E;color:#fff;border-radius:10px;font-weight:700;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);}',
+    'a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #C9A227;outline-offset:3px;}',
+    '.icon-btn,.lang-btn{min-width:44px;min-height:44px;}',
+    '.dock a,.dock button{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;}',
+    '.dock{bottom:calc(18px + env(safe-area-inset-bottom,0px));padding-left:calc(26px + env(safe-area-inset-left,0px));padding-right:calc(26px + env(safe-area-inset-right,0px));}',
+    'body{padding-bottom:env(safe-area-inset-bottom,0px);}',
+    '@media (prefers-reduced-motion: reduce){',
+    '  .dock-wa{animation:none !important;}',
+    '  .pulse-dot,.shine{animation:none !important;}',
+    '  html{scroll-behavior:auto;}',
+    '}',
+    '.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}',
+    '</style>'
+  ].join('\n');
+
   fetch(url, {cache:"force-cache"})
     .then(function(r){ if(!r.ok) throw new Error("fail"); return r.text(); })
     .then(function(html){
       html = html.replace(/(src|href)=(["'])images\//g, function(_,a,q){ return a+"="+q+imgBase+"images/"; });
       html = html.replace(/Image_URL:(["'])images\//g, function(_,q){ return "Image_URL:"+q+imgBase+"images/"; });
-      // inject SEO after first <meta name="description"...>
+
+      html = html.replace(
+        /<meta\s+name=["']viewport["'][^>]*>/i,
+        '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />'
+      );
+
       var m = html.match(/<meta\s+name=["']description["'][^>]*>/i);
       if (m) {
         html = html.replace(m[0], m[0] + '\n' + seoBlock);
       } else {
         html = html.replace(/<\/head>/i, seoBlock + '\n</head>');
       }
+
+      html = html.replace(/<\/head>/i, a11yCss + '\n</head>');
+
+      html = html.replace('<header>', '<header role="banner">');
+      html = html.replace('<footer>', '<footer role="contentinfo">');
+      html = html.replace('<nav class="desktop-nav">', '<nav class="desktop-nav" aria-label="Main">');
+
+      html = html.replace(/<body([^>]*)>/i, '<body$1>\n<a class="skip-link" href="#hero">Skip to content</a>');
+
+      html = html.replace(
+        '<button class="lang-btn" onclick="toggleLanguage()">',
+        '<button type="button" class="lang-btn" onclick="toggleLanguage()" aria-label="Change language">'
+      );
+
+      html = html.replace(
+        '<button class="icon-btn glass" onclick="openSpotlight()">',
+        '<button type="button" class="icon-btn glass" onclick="openSpotlight()" aria-label="Search products">'
+      );
+
+      html = html.replace(
+        'id="spotlight-input" type="text"',
+        'id="spotlight-input" type="search" aria-label="Search products" autocomplete="off"'
+      );
+      html = html.replace(
+        '<button onclick="closeSpotlight()" style="color:#888;font-size:18px;">✕</button>',
+        '<button type="button" onclick="closeSpotlight()" style="color:#888;font-size:18px;" aria-label="Close search">✕</button>'
+      );
+      html = html.replace('id="spotlight">', 'id="spotlight" role="dialog" aria-modal="true" aria-label="Product search">');
+
+      html = html.replace(
+        '<div class="dock glass">\n  <a href="#hero">🏠</a>\n  <a href="#inventory">🛋️</a>\n  <button onclick="openSpotlight()">🔍</button>\n  <a href="https://wa.me/919893357864" target="_blank" class="dock-wa">💬</a>\n  <a href="tel:9893357864">📞</a>\n</div>',
+        '<div class="dock glass" role="navigation" aria-label="Mobile quick links">\n  <a href="#hero" aria-label="Home">🏠</a>\n  <a href="#inventory" aria-label="Products">🛋️</a>\n  <button type="button" onclick="openSpotlight()" aria-label="Search">🔍</button>\n  <a href="https://wa.me/919893357864" target="_blank" rel="noopener" class="dock-wa" aria-label="WhatsApp inquiry">💬</a>\n  <a href="tel:9893357864" aria-label="Call Taj Handloom">📞</a>\n</div>'
+      );
+
+      html = html.replace(
+        /href="https:\/\/wa\.me\/919893357864"/g,
+        'href="https://wa.me/919893357864" rel="noopener"'
+      );
+
+      html = html.replace(
+        '<a href="#hero" class="brand">',
+        '<a href="#hero" class="brand" aria-label="Taj Handloom home">'
+      );
+
+      html = html.replace(
+        'id="loader">',
+        'id="loader" role="status" aria-live="polite" aria-label="Loading Taj Handloom">'
+      );
+
       document.open();
       document.write(html);
       document.close();
