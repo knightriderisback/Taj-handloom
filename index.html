@@ -77,7 +77,7 @@
       "priceRange": "₹₹",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "dayOfWeek": ["Monday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         "opens": "09:00",
         "closes": "21:30"
       },
@@ -115,6 +115,15 @@
     '.pcard-img{aspect-ratio:4/3;overflow:hidden;background:rgba(0,0,0,.06);}',
     '.pcard-img img{width:100%;height:100%;object-fit:cover;}',
     '.hero-img-wrap img{width:100%;height:auto;}',
+    '</style>',
+    '<style id="conv-polish">',
+    '.trust-strip{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px;padding:0;list-style:none;}',
+    '.trust-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:rgba(140,163,126,.14);color:#3d4a38;font-size:12px;font-weight:600;line-height:1.25;border:1px solid rgba(140,163,126,.25);}',
+    'body.dark .trust-chip{background:rgba(140,163,126,.22);color:#e8f0e4;border-color:rgba(140,163,126,.35);}',
+    '.dock-wa{position:relative;}',
+    '.dock-wa::after{content:"Usually replies in 5 min";position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);white-space:nowrap;background:#0b0b0b;color:#fff;font-size:10px;font-weight:600;padding:6px 9px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:5;box-shadow:0 4px 14px rgba(0,0,0,.25);}',
+    '.dock-wa:hover::after,.dock-wa:focus-visible::after{opacity:1;}',
+    '@media (max-width:640px){.dock-wa::after{content:"~5 min reply";font-size:9px;}}',
     '</style>'
   ].join('\n');
 
@@ -200,6 +209,19 @@
       html = html.replace(
         'loading="lazy" width="400" height="300" decoding="async"',
         'loading="lazy" width="400" height="300" decoding="async" sizes="(max-width:640px) 50vw, 280px"'
+      );
+
+
+      /* Phase A: trust strip + WA reply cue */
+      html = html.replace(
+        '</p>\n      <div class="hero-cta">',
+        '</p>\n      <ul class="trust-strip" aria-label="Why customers trust us"><li class="trust-chip">⭐ 5.0 Google</li><li class="trust-chip">15+ years</li><li class="trust-chip">Ward 26 · Dalli Rajhara</li><li class="trust-chip">💬 Reply in ~5 min</li></ul>\n      <div class="hero-cta">'
+      );
+
+      /* dock WA title for mobile long-press / accessibility */
+      html = html.replace(
+        'class="dock-wa" aria-label="WhatsApp inquiry"',
+        'class="dock-wa" aria-label="WhatsApp inquiry — usually replies in 5 minutes" title="Usually replies in 5 min"'
       );
 
       /* Section 5 + 6 QA */
