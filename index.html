@@ -109,6 +109,15 @@
     '</style>'
   ].join('\n');
 
+  var perfCss = [
+    '<style id="perf-polish">',
+    '#about,#journey,#team,#inventory,#reviews,#contact{content-visibility:auto;contain-intrinsic-size:auto 600px;}',
+    '.pcard-img{aspect-ratio:4/3;overflow:hidden;background:rgba(0,0,0,.06);}',
+    '.pcard-img img{width:100%;height:100%;object-fit:cover;}',
+    '.hero-img-wrap img{width:100%;height:auto;}',
+    '</style>'
+  ].join('\n');
+
   fetch(url, {cache:"force-cache"})
     .then(function(r){ if(!r.ok) throw new Error("fail"); return r.text(); })
     .then(function(html){
@@ -127,7 +136,7 @@
         html = html.replace(/<\/head>/i, seoBlock + '\n</head>');
       }
 
-      html = html.replace(/<\/head>/i, a11yCss + '\n</head>');
+      html = html.replace(/<\/head>/i, a11yCss + '\n' + perfCss + '\n</head>');
 
       html = html.replace('<header>', '<header role="banner">');
       html = html.replace('<footer>', '<footer role="contentinfo">');
@@ -173,6 +182,48 @@
       html = html.replace(
         'id="loader">',
         'id="loader" role="status" aria-live="polite" aria-label="Loading Taj Handloom">'
+      );
+
+      /* Section 4: image alts, lazy, templates */
+      html = html.replace(
+        'alt="Showroom Display"',
+        'alt="Taj Handloom showroom interior in Dalli Rajhara"'
+      );
+      html = html.replace(
+        'alt="Family Legacy"',
+        'alt="Taj Handloom family legacy — trusted in Dalli Rajhara for 15+ years"'
+      );
+      html = html.replace(
+        'alt="Before"',
+        'alt="Customer room before Taj Handloom makeover"'
+      );
+      html = html.replace(
+        'alt="After"',
+        'alt="Customer room after Taj Handloom furnishings"'
+      );
+      html = html.replace(
+        'alt="Taj Handloom Styled Collection"',
+        'alt="Taj Handloom styled home collection lookbook"'
+      );
+
+      html = html.replace(
+        '<img src="${p.Image_URL || \'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=200\'}" />',
+        '<img src="${p.Image_URL || \'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=200\'}" alt="${p.Product_Title || \'Taj Handloom product\'}" width="56" height="56" loading="lazy" decoding="async" />'
+      );
+
+      html = html.replace(
+        'alt="${p.Product_Title||\'\}"',
+        'alt="${p.Product_Title||\'Taj Handloom product\'}"'
+      );
+
+      html = html.replace(
+        'alt="${m.Owner_Name||\'\}"',
+        'alt="${m.Owner_Name||\'Taj Handloom team member\'}"'
+      );
+
+      html = html.replace(
+        'loading="lazy" width="400" height="300" decoding="async"',
+        'loading="lazy" width="400" height="300" decoding="async" sizes="(max-width:640px) 50vw, 280px"'
       );
 
       document.open();
