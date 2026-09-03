@@ -4,18 +4,45 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Taj Handloom Dalli Rajhara</title>
-<meta http-equiv="refresh" content="0; url=https://raw.githack.com/knightriderisback/Taj-handloom/b2038121984fb3ccb6a39ebab43594d382111a05/index.html" />
-<script>location.replace("https://raw.githack.com/knightriderisback/Taj-handloom/b2038121984fb3ccb6a39ebab43594d382111a05/index.html");</script>
+<meta name="description" content="Taj Handloom — Dalli Rajhara trusted home store for 15+ years. Mattresses, razaai, curtains & more." />
+<link rel="canonical" href="https://taj-handloom.vercel.app/" />
 <style>
 body{margin:0;font-family:system-ui,sans-serif;background:#f7f5f0;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:24px}
-a{display:inline-block;background:#8CA37E;color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700}
+.spin{width:36px;height:36px;border:3px solid #ddd;border-top-color:#8CA37E;border-radius:50%;animation:s .7s linear infinite;margin:0 auto 16px}
+@keyframes s{to{transform:rotate(360deg)}}
+a{color:#8CA37E;font-weight:600}
 </style>
 </head>
 <body>
 <div>
-<p style="color:#5A7350;font-size:1.2rem;font-weight:700">Taj Handloom</p>
-<p>Redirecting to full site…</p>
-<p><a href="https://raw.githack.com/knightriderisback/Taj-handloom/b2038121984fb3ccb6a39ebab43594d382111a05/index.html">Open Site Now</a></p>
+<div class="spin" id="spin"></div>
+<p style="color:#5A7350;font-weight:700;font-size:1.2rem">Taj Handloom</p>
+<p id="m" style="color:#666">Site load ho rahi hai…</p>
 </div>
+<script>
+(async function () {
+  try {
+    var parts = await Promise.all([0,1,2,3].map(function (i) {
+      return fetch("site-data/b" + i + ".txt?t=" + Date.now()).then(function (r) {
+        if (!r.ok) throw new Error("part " + i);
+        return r.text();
+      });
+    }));
+    var b64 = parts.join("");
+    var bin = Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); });
+    var ds = new DecompressionStream("gzip");
+    var stream = new Response(bin).body.pipeThrough(ds);
+    var html = await new Response(stream).text();
+    if (html.indexOf("curtain") === -1) throw new Error("bad html");
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (e) {
+    document.getElementById("spin").style.display = "none";
+    document.getElementById("m").innerHTML =
+      'Load issue. <a href="https://raw.githack.com/knightriderisback/Taj-handloom/b2038121984fb3ccb6a39ebab43594d382111a05/index.html">Full site open karo</a>';
+  }
+})();
+</script>
 </body>
 </html>
