@@ -77,9 +77,9 @@
       "priceRange": "₹₹",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "dayOfWeek": ["Monday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         "opens": "09:00",
-        "closes": "21:00"
+        "closes": "21:30"
       },
       "contactPoint": {
         "@type": "ContactPoint",
@@ -184,46 +184,58 @@
         'id="loader" role="status" aria-live="polite" aria-label="Loading Taj Handloom">'
       );
 
-      /* Section 4: image alts, lazy, templates */
-      html = html.replace(
-        'alt="Showroom Display"',
-        'alt="Taj Handloom showroom interior in Dalli Rajhara"'
-      );
-      html = html.replace(
-        'alt="Family Legacy"',
-        'alt="Taj Handloom family legacy — trusted in Dalli Rajhara for 15+ years"'
-      );
-      html = html.replace(
-        'alt="Before"',
-        'alt="Customer room before Taj Handloom makeover"'
-      );
-      html = html.replace(
-        'alt="After"',
-        'alt="Customer room after Taj Handloom furnishings"'
-      );
-      html = html.replace(
-        'alt="Taj Handloom Styled Collection"',
-        'alt="Taj Handloom styled home collection lookbook"'
-      );
+      /* Section 4 */
+      html = html.replace('alt="Showroom Display"', 'alt="Taj Handloom showroom interior in Dalli Rajhara"');
+      html = html.replace('alt="Family Legacy"', 'alt="Taj Handloom family legacy — trusted in Dalli Rajhara for 15+ years"');
+      html = html.replace('alt="Before"', 'alt="Customer room before Taj Handloom makeover"');
+      html = html.replace('alt="After"', 'alt="Customer room after Taj Handloom furnishings"');
+      html = html.replace('alt="Taj Handloom Styled Collection"', 'alt="Taj Handloom styled home collection lookbook"');
 
       html = html.replace(
         '<img src="${p.Image_URL || \'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=200\'}" />',
         '<img src="${p.Image_URL || \'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=200\'}" alt="${p.Product_Title || \'Taj Handloom product\'}" width="56" height="56" loading="lazy" decoding="async" />'
       );
-
-      html = html.replace(
-        'alt="${p.Product_Title||\'\}"',
-        'alt="${p.Product_Title||\'Taj Handloom product\'}"'
-      );
-
-      html = html.replace(
-        'alt="${m.Owner_Name||\'\}"',
-        'alt="${m.Owner_Name||\'Taj Handloom team member\'}"'
-      );
-
+      html = html.replace('alt="${p.Product_Title||\'\}"', 'alt="${p.Product_Title||\'Taj Handloom product\'}"');
+      html = html.replace('alt="${m.Owner_Name||\'\}"', 'alt="${m.Owner_Name||\'Taj Handloom team member\'}"');
       html = html.replace(
         'loading="lazy" width="400" height="300" decoding="async"',
         'loading="lazy" width="400" height="300" decoding="async" sizes="(max-width:640px) 50vw, 280px"'
+      );
+
+      /* Section 5: CTA / contact conversion */
+      html = html.replace(
+        '<p id="store-phone" class="muted">9893357864</p>',
+        '<p id="store-phone" class="muted"><a href="tel:9893357864" style="color:inherit;font-weight:700;text-decoration:underline;">9893357864</a> · <a href="https://wa.me/919893357864?text=' + encodeURIComponent('Namaste Taj Handloom! Mujhe stock / price poochna hai.') + '" target="_blank" rel="noopener" style="color:#25D366;font-weight:700;">WhatsApp</a></p>'
+      );
+
+      html = html.replace(
+        /href="https:\/\/wa\.me\/919893357864"(?!\?)/g,
+        'href="https://wa.me/919893357864?text=' + encodeURIComponent('Namaste Taj Handloom (Dalli Rajhara)! Mujhe products ke baare mein jaanna hai.') + '"'
+      );
+
+      html = html.replace(
+        'Hello Taj Handloom, I want to inquire about: ',
+        'Namaste Taj Handloom! Please share price & availability for: '
+      );
+
+      html = html.replace('data-en="Call to Check Stock"', 'data-en="Call Now — Free Stock Check"');
+      html = html.replace('>Call to Check Stock<', '>Call Now — Free Stock Check<');
+      html = html.replace('data-en="Inquiry On WhatsApp"', 'data-en="WhatsApp Us — Instant Reply"');
+      html = html.replace('>Inquiry On WhatsApp<', '>WhatsApp Us — Instant Reply<');
+
+      html = html.replace(
+        'query=Dalli+Rajhara+Chhattisgarh+Taj+Handloom" target="_blank" class="btn"',
+        'query=Dalli+Rajhara+Chhattisgarh+Taj+Handloom" target="_blank" rel="noopener" class="btn" aria-label="Open Google Maps directions"'
+      );
+
+      html = html.replace(
+        '📍 Get Directions</a>\n      </div>',
+        '📍 Get Directions</a>\n        <a href="https://wa.me/919893357864?text=' + encodeURIComponent('Namaste! Main showroom visit / order ke liye message kar raha/rahi hoon.') + '" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:12px;display:inline-flex;">💬 WhatsApp Now</a>\n      </div>'
+      );
+
+      html = html.replace(
+        '© 2026 Taj Handloom. Trusted by Dalli Rajhara.',
+        '© 2026 Taj Handloom · 15+ years trusted in Dalli Rajhara · Call/WhatsApp 9893357864'
       );
 
       document.open();
