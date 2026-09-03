@@ -21,9 +21,10 @@ a{color:#8CA37E;font-weight:600}
 </div>
 <script>
 (async function () {
+  var base = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@main/site-data/";
   try {
     var parts = await Promise.all([0,1,2,3].map(function (i) {
-      return fetch("site-data/b" + i + ".txt?t=" + Date.now()).then(function (r) {
+      return fetch(base + "b" + i + ".txt").then(function (r) {
         if (!r.ok) throw new Error("part " + i);
         return r.text();
       });
