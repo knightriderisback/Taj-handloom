@@ -4,33 +4,69 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Taj Handloom Dalli Rajhara | Loading...</title>
-<meta name="description" content="Taj Handloom — Dalli Rajhara's trusted home store for 15+ years." />
+<meta name="description" content="Taj Handloom — Dalli Rajhara trusted home store. Mattresses, razaai, curtains & more." />
 <link rel="canonical" href="https://taj-handloom.vercel.app/" />
+<style>
+  body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f7f5f0;color:#333;display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:24px}
+  .box{max-width:420px}
+  h1{color:#5A7350;font-size:1.5rem;margin:0 0 12px}
+  p{color:#555;line-height:1.5;margin:0 0 16px}
+  .btn{display:inline-block;background:#8CA37E;color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;font-size:1.05rem;border:none;cursor:pointer}
+  .btn:hover{background:#5A7350}
+  .spin{width:36px;height:36px;border:3px solid #ddd;border-top-color:#8CA37E;border-radius:50%;animation:s .8s linear infinite;margin:0 auto 16px}
+  @keyframes s{to{transform:rotate(360deg)}}
+  .hide{display:none}
+  .small{font-size:.85rem;color:#777;margin-top:20px}
+</style>
 </head>
 <body>
-<p style="font-family:system-ui,sans-serif;padding:24px;color:#333">Loading Taj Handloom…</p>
+<div class="box" id="ui">
+  <div class="spin" id="spin"></div>
+  <h1>Taj Handloom</h1>
+  <p id="msg">Site load ho rahi hai…</p>
+  <p id="btnWrap" class="hide">
+    <a class="btn" id="openBtn" href="https://raw.githack.com/knightriderisback/Taj-handloom/b2038121984fb3ccb6a39ebab43594d382111a05/index.html">Full Site Open Karo</a>
+  </p>
+  <p class="small">WhatsApp: <a href="https://wa.me/919893357864">9893357864</a></p>
+</div>
 <script>
 (function(){
-  var url = 'https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/index.html';
-  fetch(url, { cache: 'no-store' })
-    .then(function(r){ if(!r.ok) throw new Error('fetch failed'); return r.text(); })
-    .then(function(html){
-      // Rewrite relative image paths to jsDelivr so assets load reliably
-      var base = 'https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/';
-      html = html.replace(/(src|href)=(["'])images\//g, function(_, a, q){ return a + '=' + q + base + 'images/'; });
-      html = html.replace(/url\((['"]?)images\//g, function(_, q){ return 'url(' + q + base + 'images/'; });
-      document.open();
-      document.write(html);
-      document.close();
-    })
-    .catch(function(err){
-      document.body.innerHTML = '<div style="font-family:system-ui;padding:40px;max-width:480px;margin:auto">'
-        + '<h1 style="color:#5A7350">Taj Handloom</h1>'
-        + '<p>Temporary restore in progress.</p>'
-        + '<p><a href="' + url + '" style="color:#8CA37E;font-weight:600">Open full site</a></p>'
-        + '<p style="font-size:13px;color:#666">Or WhatsApp: <a href="https://wa.me/919893357864">9893357864</a></p>'
-        + '</div>';
-    });
+  var sources = [
+    'https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/index.html',
+    'https://raw.githack.com/knightriderisback/Taj-handloom/b2038121984fb3ccb6a39ebab43594d382111a05/index.html'
+  ];
+  var base = 'https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/';
+  var done = false;
+
+  function showButton(){
+    document.getElementById('spin').classList.add('hide');
+    document.getElementById('msg').textContent = 'Auto-load slow hai. Neeche button dabao:';
+    document.getElementById('btnWrap').classList.remove('hide');
+  }
+
+  function inject(html){
+    if (done) return;
+    done = true;
+    html = html.replace(/(src|href)=(["'])images\//g, function(_, a, q){ return a + '=' + q + base + 'images/'; });
+    html = html.replace(/Image_URL:(["'])images\//g, function(_, q){ return 'Image_URL:' + q + base + 'images/'; });
+    document.open();
+    document.write(html);
+    document.close();
+  }
+
+  function tryFetch(i){
+    if (i >= sources.length){ showButton(); return; }
+    fetch(sources[i], { cache: 'no-store', mode: 'cors' })
+      .then(function(r){ if (!r.ok) throw new Error('bad'); return r.text(); })
+      .then(function(html){
+        if (html && html.indexOf('curtain') !== -1) inject(html);
+        else tryFetch(i + 1);
+      })
+      .catch(function(){ tryFetch(i + 1); });
+  }
+
+  tryFetch(0);
+  setTimeout(function(){ if (!done) showButton(); }, 2500);
 })();
 </script>
 </body>
