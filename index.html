@@ -19,6 +19,10 @@
   fetch(LOADER, {cache:"no-store"})
     .then(function(r){ if(!r.ok) throw new Error("loader"); return r.text(); })
     .then(function(src){
+      src = src.replace("Owner_Name:'Zeeshaan Badgujar', Role:'Owner'", "Owner_Name:'Zeeshaan Badgujar', Role:'Next Generation'");
+      src = src.replace("Detailed_Description_EN:\\\"Helps families choose the right comfort for their home — focused on honest advice and lasting quality.\\\"", "Detailed_Description_EN:\\\"Carrying our family's 49-year promise forward — so every next home sleeps with more trust and comfort.\\\"");
+      src = src.replace("Detailed_Description_HI:\\\"परिवारों को घर के सही आराम चुनने में मदद करते हैं — ईमानदार सलाह और टिकाऊ क्वालिटी पर ध्यान।\\\"", "Detailed_Description_HI:\\\"परिवार के 49 साल के भरोसे को आगे बढ़ाते हुए — ताकि अगली पीढ़ी का हर घर और आराम से सोए।\\\"");
+      src = src.replace("Detailed_Description_CG:\\\"परिवार मन ल घर के सही आराम चुनय म मदद करथें — ईमानदार सलाह अउ टिकाऊ क्वालिटी पर ध्यान।\\\"", "Detailed_Description_CG:\\\"परिवार के 49 साल के भरोसा ल आगे बढ़ावत हवं — ताकि अगली पीढ़ी के हर घर अउ आराम से सोवय।\\\"");
       var pre = "html=html.replace(/allProducts = FALLBACK_PRODUCTS;/g,'allProducts = FALLBACK_PRODUCTS; window.allProducts = allProducts;');" +
                 "html=html.replace(/allProducts = inventory;/g,'allProducts = inventory; window.allProducts = allProducts;');" +
                 "html=html.replace(/<\\/body>/i,'<script src=\""+PHASE_C+"\" defer><\\/script><script src=\""+PHASE_D+"\" defer><\\/script><script src=\""+PHASE_E+"\" defer><\\/script><script src=\""+PHASE_F+"\" defer><\\/script><script src=\""+PHASE_G+"\" defer><\\/script></body>');";
