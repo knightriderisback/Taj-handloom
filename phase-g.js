@@ -14,10 +14,9 @@
       var hour = parseInt(map.hour, 10);
       var minute = parseInt(map.minute, 10);
       var mins = hour * 60 + minute;
-      // Tuesday closed
       if (day === 'Tue') return { open: false, label: 'Closed today (Tuesday)', color: '#b45309' };
-      var openM = 9 * 60;      // 9:00
-      var closeM = 21 * 60 + 30; // 21:30
+      var openM = 9 * 60;
+      var closeM = 21 * 60 + 30;
       if (mins >= openM && mins < closeM) {
         return { open: true, label: 'Open now · until 9:30 PM', color: '#2f6b3a' };
       }
@@ -29,6 +28,7 @@
   }
 
   function injectBadge(){
+    if (document.getElementById('taj-open-badge')) return;
     var st = getStatus();
     var el = document.createElement('div');
     el.id = 'taj-open-badge';
@@ -43,7 +43,6 @@
       'margin:8px 0'
     ].join(';');
 
-    // Prefer near hero / trust / header
     var targets = [
       document.querySelector('[class*="trust"]'),
       document.querySelector('header'),
@@ -75,42 +74,16 @@
     }
   }
 
-  function injectStickyBar(){
-    // Only useful on small screens; CSS handles visibility
-    var bar = document.createElement('div');
-    bar.id = 'taj-sticky-cta';
-    bar.setAttribute('role', 'navigation');
-    bar.setAttribute('aria-label', 'Quick contact');
-    bar.innerHTML = [
-      '<a class="taj-cta-call" href="tel:+916266599382">Call</a>',
-      '<a class="taj-cta-wa" href="https://wa.me/916266599382?text=' +
-        encodeURIComponent('Namaste! Taj Handloom se baat karni thi.') +
-        '" target="_blank" rel="noopener noreferrer">WhatsApp</a>'
-    ].join('');
-
-    var css = document.createElement('style');
-    css.textContent = [
-      '#taj-sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:9999;',
-      'padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));',
-      'background:rgba(251,246,236,.96);backdrop-filter:blur(8px);',
-      '-webkit-backdrop-filter:blur(8px);',
-      'box-shadow:0 -4px 20px rgba(0,0,0,.1);gap:10px;justify-content:center}',
-      '#taj-sticky-cta a{flex:1;max-width:200px;text-align:center;padding:12px 10px;',
-      'border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;',
-      '-webkit-tap-highlight-color:transparent}',
-      '#taj-sticky-cta .taj-cta-call{background:#fff;color:#2c3a2e;border:1.5px solid #8CA37E}',
-      '#taj-sticky-cta .taj-cta-wa{background:#25D366;color:#fff}',
-      '@media(max-width:768px){#taj-sticky-cta{display:flex}',
-      'body{padding-bottom:72px}}',
-      '@media(min-width:769px){#taj-sticky-cta{display:none!important}}'
-    ].join('');
-    document.head.appendChild(css);
-    document.body.appendChild(bar);
+  // Remove sticky bar if an older version injected it
+  function removeSticky(){
+    var bar = document.getElementById('taj-sticky-cta');
+    if (bar && bar.parentNode) bar.parentNode.removeChild(bar);
+    document.body.style.paddingBottom = '';
   }
 
   function run(){
+    removeSticky();
     injectBadge();
-    injectStickyBar();
   }
 
   if (document.readyState === 'loading') {
