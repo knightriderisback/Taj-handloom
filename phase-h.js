@@ -1,7 +1,7 @@
 (function(){
   if (window.__phaseH) return; window.__phaseH = true;
 
-  // Force square lookbook (photo is 1:1)
+  // Photo is 1:1 square — force correct box
   var s = document.createElement('style');
   s.id = 'phase-h-lookbook';
   s.textContent = [
@@ -10,16 +10,16 @@
   ].join('');
   (document.head||document.documentElement).appendChild(s);
 
-  // Recalibrate dots for square layout
+  // Dots mapped to the actual bedroom lookbook photo
   var positions = [
-    { label: 'Heavy Razaai & Mink Blankets', top: '28%', left: '45%' },
-    { label: 'Designer Bedsheet', top: '48%', left: '55%' },
-    { label: 'Designer Cushions', top: '30%', left: '78%' },
-    { label: 'Bolster (Gol Takiya)', top: '42%', left: '68%' },
-    { label: 'AC Blanket (Dohar)', top: '70%', left: '38%' },
-    { label: 'Cushion Covers', top: '58%', left: '75%' },
-    { label: 'Premium Kaaleen', top: '82%', left: '18%' },
-    { label: 'Welcome Doormat', top: '90%', left: '50%' }
+    { label: 'Window Curtains', top: '16%', left: '11%' },
+    { label: 'Designer Cushions', top: '35%', left: '36%' },
+    { label: 'Bolster (Gol Takiya)', top: '41%', left: '44%' },
+    { label: 'Designer Bedsheet', top: '46%', left: '32%' },
+    { label: 'Heavy Winter Razaai', top: '50%', left: '55%' },
+    { label: 'AC Blanket (Dohar)', top: '57%', left: '65%' },
+    { label: 'Shaggy Rugs', top: '82%', left: '22%' },
+    { label: 'Premium Kaaleen', top: '76%', left: '72%' }
   ];
 
   function fixDots(){
@@ -33,6 +33,9 @@
       dots[i].setAttribute('aria-label', p.label);
       dots[i].title = p.label;
     });
+    for (var j = positions.length; j < dots.length; j++) {
+      dots[j].style.display = 'none';
+    }
     return true;
   }
 
@@ -45,4 +48,5 @@
     setTimeout(run, 300);
   }
   setTimeout(run, 1200);
+  setTimeout(run, 2500);
 })();
