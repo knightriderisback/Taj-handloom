@@ -9,7 +9,6 @@
       if (n > 150) clearInterval(t);
     }, 80);
   }
-  // Force-hide category chips + sticky CTA ASAP (even before products ready)
   (function earlyHide(){
     var s = document.createElement('style');
     s.id = 'phase-c-css';
@@ -53,22 +52,61 @@
       }
       if (typeof renderProducts === 'function') renderProducts(list);
     };
+
+    function getCardImage(card, title){
+      var imgUrl = '';
+      if (card) {
+        var img = card.querySelector('img');
+        if (img) {
+          imgUrl = img.currentSrc || img.src || img.getAttribute('data-src') || '';
+          if (imgUrl && imgUrl.indexOf('data:') === 0) imgUrl = '';
+        }
+      }
+      if (!imgUrl && title && window.allProducts) {
+        var tt = title.trim().toLowerCase();
+        for (var i=0;i<window.allProducts.length;i++){
+          var p = window.allProducts[i];
+          if ((p.Product_Title||'').trim().toLowerCase() === tt && p.Image_URL) {
+            imgUrl = p.Image_URL;
+            break;
+          }
+        }
+      }
+      return imgUrl || '';
+    }
+
     function upgradeWaLinks(){
-      document.querySelectorAll('a.pcard-wa, a.spotlight-result').forEach(function(a){
+      document.querySelectorAll('a.pcard-wa, a.spotlight-result, a[href*="wa.me"]').forEach(function(a){
         try {
           var href = a.getAttribute('href')||'';
           if (href.indexOf('wa.me') === -1) return;
-          var title = '', cat = '';
           var card = a.closest('.pcard');
+          var isSpotlight = a.classList.contains('spotlight-result');
+          if (!card && !isSpotlight && !a.classList.contains('pcard-wa')) return;
+
+          var title = '', cat = '';
           if (card) {
-            title = (card.querySelector('.pcard-title')||{}).textContent || '';
-            cat = (card.querySelector('.pcard-cat')||{}).textContent || '';
+            title = ((card.querySelector('.pcard-title')||{}).textContent || '').trim();
+            cat = ((card.querySelector('.pcard-cat')||{}).textContent || '').trim();
           }
           if (!title) {
             var p = a.querySelector('p');
-            if (p) title = p.textContent || '';
+            if (p) title = (p.textContent || '').trim();
           }
-          var msg = 'Namaste Taj Handloom (Dalli Rajhara)!\n\nProduct: ' + (title||'Product') + '\nCategory: ' + (cat||'') + '\n\nMujhe iska price, size options aur stock status bataiye please.';
+          var imgUrl = getCardImage(card, title);
+
+          var lines = [
+            'Namaste Taj Handloom (Dalli Rajhara)!',
+            '',
+            'Product: ' + (title || 'Product'),
+            'Category: ' + (cat || '')
+          ];
+          if (imgUrl) {
+            lines.push('Photo: ' + imgUrl);
+          }
+          lines.push('');
+          lines.push('Mujhe iska price, size options aur stock status bataiye please.');
+          var msg = lines.join('\n');
           a.setAttribute('href', 'https://wa.me/916266599382?text=' + encodeURIComponent(msg));
           a.setAttribute('rel', 'noopener');
           a.setAttribute('target', '_blank');
