@@ -3,27 +3,25 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Taj Handloom</title>
+<title>Taj Handloom (Furnishing) — Dalli Rajhara</title>
+<meta name="description" content="Taj Handloom Dalli Rajhara — Trusted for 49+ years. WhatsApp 6266599382." />
 <style>html,body{margin:0;background:#FBF6EC;min-height:100%}</style>
 </head>
 <body>
 <script>
 (function(){
-  var base = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@main/site-data/";
-  var fallback = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@443fc18d9a7b5f81c7835d100481156fab4ff848/index.html";
-  Promise.all([0,1,2].map(function(i){
-    return fetch(base + "pc" + i + ".txt?t=" + Date.now(), {cache:"no-store"}).then(function(r){
-      if(!r.ok) throw new Error("chunk");
-      return r.text();
-    });
-  })).then(function(parts){
-    var html = parts.join("");
-    document.open(); document.write(html); document.close();
-  }).catch(function(){
-    fetch(fallback,{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){
-      document.open(); document.write(t); document.close();
-    }).catch(function(){ location.href = fallback; });
-  });
+  var LOADER = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@443fc18d9a7b5f81c7835d100481156fab4ff848/index.html";
+  var PHASE_C = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@main/phase-c.js";
+  fetch(LOADER, {cache:"no-store"})
+    .then(function(r){ if(!r.ok) throw new Error("loader"); return r.text(); })
+    .then(function(src){
+      var inject = 'html=html.replace(/<\\/body>/i,\'<script src="'+PHASE_C+'" defer><\\/script></body>\');';
+      src = src.replace("document.write(html);", inject + "document.write(html);");
+      document.open();
+      document.write(src);
+      document.close();
+    })
+    .catch(function(){ location.replace(LOADER); });
 })();
 </script>
 </body>
