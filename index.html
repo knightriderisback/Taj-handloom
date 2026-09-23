@@ -15,6 +15,15 @@
   fetch(LOADER, {cache:"no-store"})
     .then(function(r){ if(!r.ok) throw new Error("loader"); return r.text(); })
     .then(function(src){
+      // Expose allProducts on window so Phase C can filter
+      src = src.replace(
+        /allProducts = FALLBACK_PRODUCTS;/g,
+        'allProducts = FALLBACK_PRODUCTS; window.allProducts = allProducts;'
+      );
+      src = src.replace(
+        /allProducts = inventory;/g,
+        'allProducts = inventory; window.allProducts = allProducts;'
+      );
       var inject = 'html=html.replace(/<\\/body>/i,\'<script src="'+PHASE_C+'" defer><\\/script></body>\');';
       src = src.replace("document.write(html);", inject + "document.write(html);");
       document.open();
