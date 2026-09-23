@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Taj Handloom (Furnishing) — Dalli Rajhara's Premier Home Store</title>
+<meta name="description" content="Taj Handloom Dalli Rajhara — Premium mattresses, quilts, blankets, curtains, mosquito nets, pillows, doormats & rexine. Trusted for 49+ years. Call/WhatsApp 6266599382." />
+<link rel="canonical" href="https://taj-handloom.vercel.app/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#8CA37E" />
+<meta name="author" content="Taj Handloom" />
+<meta name="geo.region" content="IN-CT" />
+<meta name="geo.placename" content="Dalli Rajhara" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_IN" />
+<meta property="og:locale:alternate" content="hi_IN" />
+<meta property="og:site_name" content="Taj Handloom" />
+<meta property="og:title" content="Taj Handloom (Furnishing) — Dalli Rajhara's Premier Home Store" />
+<meta property="og:description" content="Premium mattresses, quilts, blankets, curtains, mosquito nets & more. Trusted in Dalli Rajhara for 49+ years. Call / WhatsApp 6266599382." />
+<meta property="og:url" content="https://taj-handloom.vercel.app/" />
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/images/44_Hero_Showroom.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Taj Handloom showroom in Dalli Rajhara" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Taj Handloom — Dalli Rajhara Home Furnishings" />
+<meta name="twitter:description" content="Mattresses, quilts, curtains & more. 49+ years trusted store. WhatsApp 6266599382." />
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/images/44_Hero_Showroom.jpg" />
+<style>html,body{margin:0;background:#FBF6EC;min-height:100%}</style>
+</head>
+<body>
+<script>
+(function(){
+  var url = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/index.html";
+  var imgBase = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@b2038121984fb3ccb6a39ebab43594d382111a05/";
+
+  var seoBlock = [
+    '<link rel="canonical" href="https://taj-handloom.vercel.app/" />',
+    '<meta name="robots" content="index, follow, max-image-preview:large" />',
+    '<meta name="theme-color" content="#8CA37E" />',
+    '<meta name="author" content="Taj Handloom" />',
+    '<meta name="geo.region" content="IN-CT" />',
+    '<meta name="geo.placename" content="Dalli Rajhara" />',
+    '<meta property="og:type" content="website" />',
+    '<meta property="og:locale" content="en_IN" />',
+    '<meta property="og:locale:alternate" content="hi_IN" />',
+    '<meta property="og:site_name" content="Taj Handloom" />',
+    '<meta property="og:title" content="Taj Handloom (Furnishing) — Dalli Rajhara\'s Premier Home Store" />',
+    '<meta property="og:description" content="Premium mattresses, quilts, blankets, curtains, mosquito nets & more. Trusted in Dalli Rajhara for 49+ years. Call / WhatsApp 6266599382." />',
+    '<meta property="og:url" content="https://taj-handloom.vercel.app/" />',
+    '<meta property="og:image" content="' + imgBase + 'images/44_Hero_Showroom.jpg" />',
+    '<meta property="og:image:width" content="1200" />',
+    '<meta property="og:image:height" content="630" />',
+    '<meta property="og:image:alt" content="Taj Handloom showroom in Dalli Rajhara" />',
+    '<meta name="twitter:card" content="summary_large_image" />',
+    '<meta name="twitter:title" content="Taj Handloom — Dalli Rajhara Home Furnishings" />',
+    '<meta name="twitter:description" content="Mattresses, quilts, curtains & more. 49+ years trusted store. WhatsApp 6266599382." />',
+    '<meta name="twitter:image" content="' + imgBase + 'images/44_Hero_Showroom.jpg" />',
+    '<script type="application/ld+json">',
+    JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HomeGoodsStore",
+      "name": "Taj Handloom (Furnishing)",
+      "alternateName": "Taj Handloom Dalli Rajhara",
+      "description": "Premium mattresses, quilts, blankets, curtains, mosquito nets, pillows, doormats and rexine. Trusted home store in Dalli Rajhara for over 49 years.",
+      "url": "https://taj-handloom.vercel.app/",
+      "telephone": "+916266599382",
+      "image": imgBase + "images/44_Hero_Showroom.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dalli Rajhara",
+        "addressRegion": "Chhattisgarh",
+        "postalCode": "491228",
+        "addressCountry": "IN"
+      },
+      "areaServed": { "@type": "City", "name": "Dalli Rajhara" },
+      "priceRange": "₹₹",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "21:30"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+916266599382",
+        "contactType": "customer service",
+        "availableLanguage": ["Hindi","English"]
+      }
+    }),
+    '</scr' + 'ipt>'
+  ].join('\n');
+
+  var a11yCss = [
+    '<style id="a11y-polish">',
+    '.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;}',
+    '.skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:12px 18px;background:#8CA37E;color:#fff;border-radius:10px;font-weight:700;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);}',
+    'a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #C9A227;outline-offset:3px;}',
+    '.icon-btn,.lang-btn{min-width:44px;min-height:44px;}',
+    '.dock a,.dock button{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;}',
+    '.dock{bottom:calc(18px + env(safe-area-inset-bottom,0px));padding-left:calc(26px + env(safe-area-inset-left,0px));padding-right:calc(26px + env(safe-area-inset-right,0px));}',
+    'body{padding-bottom:env(safe-area-inset-bottom,0px);}',
+    '@media (prefers-reduced-motion: reduce){',
+    '  .dock-wa{animation:none !important;}',
+    '  .pulse-dot,.shine{animation:none !important;}',
+    '  html{scroll-behavior:auto;}',
+    '}',
+    '.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}',
+    '</style>'
+  ].join('\n');
+
+  var perfCss = [
+    '<style id="perf-polish">',
+    '#about,#journey,#team,#inventory,#reviews,#contact{content-visibility:auto;contain-intrinsic-size:auto 600px;}',
+    '.pcard-img{aspect-ratio:4/3;overflow:hidden;background:rgba(0,0,0,.06);}',
+    '.pcard-img img{width:100%;height:100%;object-fit:cover;}',
+    '.hero-img-wrap img{width:100%;height:auto;}',
+    '</style>',
+    '<style id="conv-polish">',
+    '.trust-strip{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px;padding:0;list-style:none;}',
+    '.trust-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:rgba(140,163,126,.14);color:#3d4a38;font-size:12px;font-weight:600;line-height:1.25;border:1px solid rgba(140,163,126,.25);}',
+    'body.dark .trust-chip{background:rgba(140,163,126,.22);color:#e8f0e4;border-color:rgba(140,163,126,.35);}',
+    '.dock-wa{position:relative;}',
+    '.dock-wa::after{content:"Usually replies in 5 min";position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);white-space:nowrap;background:#0b0b0b;color:#fff;font-size:10px;font-weight:600;padding:6px 9px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:5;box-shadow:0 4px 14px rgba(0,0,0,.25);}',
+    '.dock-wa:hover::after,.dock-wa:focus-visible::after{opacity:1;}',
+    '@media (max-width:640px){.dock-wa::after{content:"~5 min reply";font-size:9px;}}',
+    '#toast{display:none !important;}',
+    '</style>'
+  ].join('\n');
+
+  fetch(url, {cache:"force-cache"})
+    .then(function(r){ if(!r.ok) throw new Error("fail"); return r.text(); })
+    .then(function(html){
+      html = html.replace(/(src|href)=(["'])images\//g, function(_,a,q){ return a+"="+q+imgBase+"images/"; });
+      html = html.replace(/Image_URL:(["'])images\//g, function(_,q){ return "Image_URL:"+q+imgBase+"images/"; });
+
+      html = html.replace(
+        /<meta\s+name=["']viewport["'][^>]*>/i,
+        '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />'
+      );
+
+      var m = html.match(/<meta\s+name=["']description["'][^>]*>/i);
+      if (m) {
+        html = html.replace(m[0], m[0] + '\n' + seoBlock);
+      } else {
+        html = html.replace(/<\/head>/i, seoBlock + '\n</head>');
+      }
+
+      html = html.replace(/<\/head>/i, a11yCss + '\n' + perfCss + '\n</head>');
+
