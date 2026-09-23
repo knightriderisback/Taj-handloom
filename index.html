@@ -1,1 +1,19 @@
-<PLACEHOLDER>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Taj Handloom</title>
+<style>html,body{margin:0;background:#FBF6EC}</style>
+</head>
+<body>
+<script>
+(function(){
+  var FALLBACK = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@443fc18d9a7b5f81c7835d100481156fab4ff848/index.html";
+  fetch(FALLBACK,{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){
+    document.open();document.write(t);document.close();
+  }).catch(function(){ location.href = FALLBACK; });
+})();
+</script>
+</body>
+</html>
