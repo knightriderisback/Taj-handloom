@@ -1,0 +1,10 @@
+{
+  "name": "Taj Handloom — Dalli Rajhara",
+  "short_name": "Taj Handloom",
+  "description": "Trusted home furnishings in Dalli Rajhara for 49+ years. Mattresses, quilts, curtains & more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF6EC",
+  "theme_color": "#8CA37E",
+  "lang": "en-IN"
+}

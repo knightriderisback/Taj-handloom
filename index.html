@@ -13,12 +13,13 @@
   var LOADER = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@443fc18d9a7b5f81c7835d100481156fab4ff848/index.html";
   var PHASE_C = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@ba75048b981edacd0586e5ec29060d14704a02d2/phase-c.js";
   var PHASE_D = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@cd0d697e59ed2a570e918919b0fcf2b087bbeadf/phase-d.js";
+  var PHASE_E = "https://cdn.jsdelivr.net/gh/knightriderisback/Taj-handloom@main/phase-e.js";
   fetch(LOADER, {cache:"no-store"})
     .then(function(r){ if(!r.ok) throw new Error("loader"); return r.text(); })
     .then(function(src){
       var pre = "html=html.replace(/allProducts = FALLBACK_PRODUCTS;/g,'allProducts = FALLBACK_PRODUCTS; window.allProducts = allProducts;');" +
                 "html=html.replace(/allProducts = inventory;/g,'allProducts = inventory; window.allProducts = allProducts;');" +
-                "html=html.replace(/<\\/body>/i,'<script src=\""+PHASE_C+"\" defer><\\/script><script src=\""+PHASE_D+"\" defer><\\/script></body>');";
+                "html=html.replace(/<\\/body>/i,'<script src=\""+PHASE_C+"\" defer><\\/script><script src=\""+PHASE_D+"\" defer><\\/script><script src=\""+PHASE_E+"\" defer><\\/script></body>');";
       src = src.replace("document.write(html);", pre + "document.write(html);");
       document.open();
       document.write(src);
