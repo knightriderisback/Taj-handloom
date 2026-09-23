@@ -1,7 +1,13 @@
 (function(){
   if (window.__phaseG) return; window.__phaseG = true;
 
-  // Store hours: 9:00 AM – 9:30 PM, Closed Tuesday (Asia/Kolkata)
+  // Kill sticky CTA immediately
+  (function(){
+    var s = document.createElement('style');
+    s.textContent = '#taj-sticky-cta{display:none!important;visibility:hidden!important;height:0!important;max-height:0!important;overflow:hidden!important;pointer-events:none!important;opacity:0!important}';
+    (document.head||document.documentElement).appendChild(s);
+  })();
+
   function getStatus(){
     try {
       var parts = new Intl.DateTimeFormat('en-IN', {
@@ -42,7 +48,6 @@
       'box-shadow:0 2px 8px rgba(0,0,0,.06)',
       'margin:8px 0'
     ].join(';');
-
     var targets = [
       document.querySelector('[class*="trust"]'),
       document.querySelector('header'),
@@ -55,40 +60,46 @@
       if (!t) continue;
       if (t.tagName === 'H1' && t.parentNode) {
         t.parentNode.insertBefore(el, t.nextSibling);
-        placed = true;
-        break;
+        placed = true; break;
       }
       if (t !== document.querySelector('main')) {
-        t.appendChild(el);
-        placed = true;
-        break;
+        t.appendChild(el); placed = true; break;
       }
     }
-    if (!placed) {
-      el.style.position = 'fixed';
-      el.style.top = '12px';
-      el.style.left = '50%';
-      el.style.transform = 'translateX(-50%)';
-      el.style.zIndex = '9997';
-      document.body.appendChild(el);
-    }
+    if (!placed) document.body.appendChild(el);
   }
 
-  // Remove sticky bar if an older version injected it
   function removeSticky(){
     var bar = document.getElementById('taj-sticky-cta');
     if (bar && bar.parentNode) bar.parentNode.removeChild(bar);
     document.body.style.paddingBottom = '';
   }
 
+  // BOTH numbers: 9893357864 (original) + 6266599382 (new default WA)
+  function restoreBothPhones(){
+    var html = [
+      '<a href="tel:9893357864" style="color:inherit;font-weight:700;text-decoration:underline">9893357864</a>',
+      ' · ',
+      '<a href="tel:6266599382" style="color:inherit;font-weight:700;text-decoration:underline">6266599382</a>',
+      ' · ',
+      '<a href="https://wa.me/916266599382?text=' + encodeURIComponent('Namaste Taj Handloom! Mujhe stock / price poochna tha.') +
+        '" target="_blank" rel="noopener" style="color:#25D366;font-weight:700">WhatsApp</a>'
+    ].join('');
+    var el = document.getElementById('store-phone');
+    if (el) el.innerHTML = html;
+  }
+
   function run(){
     removeSticky();
     injectBadge();
+    restoreBothPhones();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(run, 500); });
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(run, 400); });
   } else {
-    setTimeout(run, 500);
+    setTimeout(run, 400);
   }
+  setTimeout(run, 1200);
+  setTimeout(run, 2500);
 })();
